@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-lang-key="title">Salmani Rishtey - A Community Matrimony</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-green: #0A483E;
+            --secondary-gold: #FFD700;
+            --light-cream: #F5F5DC;
+            --dark: #222;
+            --muted: #7b7b7b;
+            --card-bg: #fff;
+        }
+
+        * {box-sizing: border-box; margin: 0; padding: 0;}
+        body {
+            font-family: "Poppins", 'Noto Sans Devanagari', sans-serif;
+            color: var(--dark);
+            background: #fafafa;
+            overflow-x: hidden;
+            transition: filter 0.5s ease-in-out;
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.01); }
+            100% { transform: scale(1); }
+        }
+
+        /* MAIN LAYOUT */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .heading {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--primary-green);
+        }
+
+        .sub-heading {
+            font-size: 1.2rem;
+            color: var(--muted);
+            margin-bottom: 50px;
+        }
+
+        /* NAVIGATION BAR */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            background: var(--card-bg);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-green);
+        }
+        .logo span {
+            color: var(--secondary-gold);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-green);
+        }
+        
+        .nav-buttons {
+            display: flex;
+            align-items: center;
+        }
+        .nav-buttons .btn {
+            background-color: var(--primary-green);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            margin-left: 10px;
+        }
+
+        .nav-buttons .btn:hover {
+            background-color: #083c34;
+        }
+
+        #languageSelector {
+            padding: 8px 12px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-family: inherit;
+        }
+
+        .menu-toggle {
+            display: none; /* Initially hidden on desktop */
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary-green);
+        }
+
+        /* HERO SECTION */
+        .hero-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 90vh;
+            background: linear-gradient(rgba(10, 72, 62, 0.8), rgba(10, 72, 62, 0.8)), url('https://source.unsplash.com/1600x900/?indian-wedding,islamic-wedding') center center/cover no-repeat;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            animation: fadeInUp 1s ease-out;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        .hero-content p {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            font-weight: 400;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons .btn {
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+        }
+
+        .btn-primary {
+            background-color: var(--secondary-gold);
+            color: var(--dark);
+        }
+
+        .btn-primary:hover {
+            background-color: #e5c100;
+        }
+        
+        /* 'WHY CHOOSE US' SECTION */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .feature-card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--primary-green);
+        }
+        .feature-card p {
+            color: var(--muted);
+            line-height: 1.6;
+        }
+        .feature-card .icon-circle {
+            background: var(--light-cream);
+            color: var(--primary-green);
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        /* TESTIMONIALS */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .testimonial-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .testimonial-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+        .testimonial-card p {
+            font-style: italic;
+            color: var(--muted);
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        .testimonial-card h4 {
+            font-size: 1.2rem;
+            color: var(--primary-green);
+            margin-bottom: 5px;
+        }
+        .testimonial-card span {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        /* FOOTER */
+        .footer {
+            background-color: var(--primary-green);
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+        }
+        .footer-links a {
+            color: var(--light-cream);
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 400;
+        }
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        .social-icons {
+            margin-top: 20px;
+        }
+        .social-icons a {
+            color: var(--light-cream);
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        .social-icons a:hover {
+            color: var(--secondary-gold);
+        }
+
+        /* Responsive Design Media Queries */
+
+        /* For Tablets and Mobile (max-width: 768px) */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-wrap: wrap;
+                padding: 10px 15px;
+            }
+            .nav-links, .nav-buttons {
+                display: none; /* Hide both menus by default */
+                width: 100%;
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+                margin-top: 10px;
+            }
+            
+            .nav-links.active, .nav-buttons.active {
+                display: flex; /* Show when active */
+            }
+
+            .nav-links a {
+                margin: 0;
+                padding: 10px 0;
+                border-bottom: 1px solid #eee;
+            }
+            .nav-links a:last-child {
+                border-bottom: none;
+            }
+
+            .nav-buttons {
+                flex-direction: row;
+                justify-content: center;
+                gap: 10px;
+            }
+            .nav-buttons .btn {
+                flex: 1;
+                margin-left: 0;
+            }
+
+            #languageSelector {
+                width: 100%;
+            }
+
+            .menu-toggle {
+                display: block; /* Show the toggle button */
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .hero-content p {
+                font-size: 1rem;
+            }
+            .hero-buttons .btn {
+                padding: 10px 20px;
+                font-size: 1rem;
+            }
+            .features-grid, .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            .heading {
+                font-size: 2rem;
+            }
+            .sub-heading {
+                font-size: 1rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar container">
+        <div class="logo" data-lang-key="logo-title">Salmani<span>Rishtey</span></div>
+        <div class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="#about" data-lang-key="nav-about">About Us</a>
+            <a href="#features" data-lang-key="nav-services">Services</a>
+            <a href="#testimonials" data-lang-key="nav-success-stories">Success Stories</a>
+            <a href="#" data-lang-key="nav-blog">Blog</a>
+            <a href="#" data-lang-key="nav-contact">Contact Us</a>
+        </div>
+        <div class="nav-buttons" id="navButtons">
+            <select id="languageSelector">
+                <option value="en">English</option>
+                <option value="hi">हिन्दी</option>
+            </select>
+            <a href="#" class="btn btn-login" data-lang-key="nav-login">Log In</a>
+            <a href="#" class="btn btn-register" data-lang-key="nav-register">Register Now</a>
+        </div>
+    </nav>
+
+    <header class="hero-section">
+        <div class="hero-content">
+            <h1 data-lang-key="hero-heading">Trusted Nikah for the Salmani Community</h1>
+            <p data-lang-key="hero-subheading">Find your life partner who understands your culture and traditions. Salmani Rishtey offers the most reliable and secure matchmaking platform for you.</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn btn-primary" data-lang-key="hero-button">Free Registration</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="features" class="section">
+        <div class="container">
+            <h2 class="heading" data-lang-key="features-heading">Why Choose Us?</h2>
+            <p class="sub-heading" data-lang-key="features-subheading">This platform is specially designed for the Salmani community to give you the best experience.</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon-circle"><i class="fas fa-lock"></i></div>
+                    <h3 data-lang-key="feature1-title">100% Secure</h3>
+                    <p data-lang-key="feature1-desc">Your information is completely safe. We care about your data privacy, so you can search for your match without any worries.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-circle"><i class="fas fa-users"></i></div>
+                    <h3 data-lang-key="feature2-title">Accurate Matches</h3>
+                    <p data-lang-key="feature2-desc">Our advanced algorithm helps you find the most accurate and suitable life partner based on your community, gotra, and personal preferences.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-circle"><i class="fas fa-handshake"></i></div>
+                    <h3 data-lang-key="feature3-title">Traditional & Modern</h3>
+                    <p data-lang-key="feature3-desc">We blend traditional values with a modern approach, helping you find a partner who is truly right for you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="testimonials" class="section" style="background-color: var(--light-cream);">
+        <div class="container">
+            <h2 class="heading" data-lang-key="testimonials-heading">Our Success Stories</h2>
+            <p class="sub-heading" data-lang-key="testimonials-subheading">Our platform has helped many people start their love story. Here are a few.</p>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <img src="https://source.unsplash.com/100x100/?indian-couple" alt="Testimonial">
+                    <p data-lang-key="testimonial1-text">"With the help of Salmani Rishtey, I found my life partner. The profiles here are very authentic and reliable."</p>
+                    <h4 data-lang-key="testimonial1-name">Ali and Fatima</h4>
+                    <span data-lang-key="testimonial1-location">Mumbai, India</span>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://source.unsplash.com/100x100/?muslim-couple" alt="Testimonial">
+                    <p data-lang-key="testimonial2-text">"This website helped me find the right person according to my family's traditions. We are very happy!"</p>
+                    <h4 data-lang-key="testimonial2-name">Aadil and Zainab</h4>
+                    <span data-lang-key="testimonial2-location">Delhi, India</span>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://source.unsplash.com/100x100/?happy-couple" alt="Testimonial">
+                    <p data-lang-key="testimonial3-text">"The fact that this platform is exclusively for the Salmani community is what makes it unique. Thank you so much!"</p>
+                    <h4 data-lang-key="testimonial3-name">Imran and Sana</h4>
+                    <span data-lang-key="testimonial3-location">Lucknow, India</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="logo" style="color: white;" data-lang-key="footer-logo">Salmani<span>Rishtey</span></div>
+            <p style="margin-top: 10px;" data-lang-key="footer-tagline">A Dedicated Nikah Service for the Salmani Community</p>
+            <div class="footer-links" style="margin-top: 20px;">
+                <a href="#" data-lang-key="footer-about">About Us</a> |
+                <a href="#" data-lang-key="footer-privacy">Privacy Policy</a> |
+                <a href="#" data-lang-key="footer-terms">Terms & Conditions</a> |
+                <a href="#" data-lang-key="footer-help">Help</a>
+            </div>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p style="margin-top: 20px;" data-lang-key="footer-copyright">&copy; 2024 Salmani Rishtey. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const languageSelector = document.getElementById('languageSelector');
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.getElementById('navLinks');
+            const navButtons = document.getElementById('navButtons');
+
+            // Translations object with English and Hindi content
+            const translations = {
+                'en': {
+                    'title': 'Salmani Rishtey - A Community Matrimony',
+                    'logo-title': 'Salmani<span>Rishtey</span>',
+                    'nav-about': 'About Us',
+                    'nav-services': 'Services',
+                    'nav-success-stories': 'Success Stories',
+                    'nav-blog': 'Blog',
+                    'nav-contact': 'Contact Us',
+                    'nav-login': 'Log In',
+                    'nav-register': 'Register Now',
+                    'hero-heading': 'Trusted Nikah for the Salmani Community',
+                    'hero-subheading': 'Find your life partner who understands your culture and traditions. Salmani Rishtey offers the most reliable and secure matchmaking platform for you.',
+                    'hero-button': 'Free Registration',
+                    'features-heading': 'Why Choose Us?',
+                    'features-subheading': 'This platform is specially designed for the Salmani community to give you the best experience.',
+                    'feature1-title': '100% Secure',
+                    'feature1-desc': 'Your information is completely safe. We care about your data privacy, so you can search for your match without any worries.',
+                    'feature2-title': 'Accurate Matches',
+                    'feature2-desc': 'Our advanced algorithm helps you find the most accurate and suitable life partner based on your community, gotra, and personal preferences.',
+                    'feature3-title': 'Traditional & Modern',
+                    'feature3-desc': 'We blend traditional values with a modern approach, helping you find a partner who is truly right for you.',
+                    'testimonials-heading': 'Our Success Stories',
+                    'testimonials-subheading': 'Our platform has helped many people start their love story. Here are a few.',
+                    'testimonial1-text': '"With the help of Salmani Rishtey, I found my life partner. The profiles here are very authentic and reliable."',
+                    'testimonial1-name': 'Ali and Fatima',
+                    'testimonial1-location': 'Mumbai, India',
+                    'testimonial2-text': '"This website helped me find the right person according to my family\'s traditions. We are very happy!"',
+                    'testimonial2-name': 'Aadil and Zainab',
+                    'testimonial2-location': 'Delhi, India',
+                    'testimonial3-text': '"The fact that this platform is exclusively for the Salmani community is what makes it unique. Thank you so much!"',
+                    'testimonial3-name': 'Imran and Sana',
+                    'testimonial3-location': 'Lucknow, India',
+                    'footer-logo': 'Salmani<span>Rishtey</span>',
+                    'footer-tagline': 'A Dedicated Nikah Service for the Salmani Community',
+                    'footer-about': 'About Us',
+                    'footer-privacy': 'Privacy Policy',
+                    'footer-terms': 'Terms & Conditions',
+                    'footer-help': 'Help',
+                    'footer-copyright': '&copy; 2024 Salmani Rishtey. All Rights Reserved.'
+                },
+                'hi': {
+                    'title': 'Salmani Rishtey - एक समुदाय के लिए निकाह',
+                    'logo-title': 'Salmani<span>Rishtey</span>',
+                    'nav-about': 'हमारे बारे में',
+                    'nav-services': 'सेवाएं',
+                    'nav-success-stories': 'सफलता की कहानियाँ',
+                    'nav-blog': 'ब्लॉग',
+                    'nav-contact': 'संपर्क करें',
+                    'nav-login': 'लॉग इन करें',
+                    'nav-register': 'अभी पंजीकरण करें',
+                    'hero-heading': 'Salmani समुदाय के लिए विश्वसनीय निकाह',
+                    'hero-subheading': 'यहाँ खोजें अपनी जिंदगी का हमसफर, जो आपकी संस्कृति और परंपराओं को समझे। Salmani Rishtey आपके लिए पेश करता है सबसे भरोसेमंद और सुरक्षित मैचमेकिंग प्लेटफॉर्म।',
+                    'hero-button': 'फ्री रजिस्ट्रेशन',
+                    'features-heading': 'हमें क्यों चुनें?',
+                    'features-subheading': 'Salmani समुदाय के लिए खास तौर पर बनाया गया यह प्लेटफॉर्म आपको सबसे बेहतर अनुभव देगा।',
+                    'feature1-title': '100% सुरक्षित',
+                    'feature1-desc': 'आपकी जानकारी पूरी तरह से सुरक्षित है। हम आपके डेटा की गोपनीयता का ध्यान रखते हैं, ताकि आप बिना किसी चिंता के अपना रिश्ता खोज सकें।',
+                    'feature2-title': 'सटीक मैच',
+                    'feature2-desc': 'हमारा उन्नत एल्गोरिदम (advanced algorithm) आपके समुदाय, गोत्र और व्यक्तिगत पसंद के अनुसार सबसे सटीक और उपयुक्त जीवन साथी खोजने में मदद करता है।',
+                    'feature3-title': 'पारंपरिक और आधुनिक',
+                    'feature3-desc': 'हम पारंपरिक मूल्यों को आधुनिक दृष्टिकोण के साथ जोड़ते हैं, जिससे आपको सही मायने में एक ऐसा साथी मिलता है जो आपके लिए बिल्कुल सही हो।',
+                    'testimonials-heading': 'हमारी सफलता की कहानियाँ',
+                    'testimonials-subheading': 'हमारे प्लेटफॉर्म ने कई लोगों को उनकी प्रेम कहानी शुरू करने में मदद की है।',
+                    'testimonial1-text': '"Salmani Rishtey की मदद से मुझे अपना जीवन साथी मिला। यहाँ के प्रोफाइल बहुत ही प्रामाणिक और विश्वसनीय हैं।"',
+                    'testimonial1-name': 'अली और फातिमा',
+                    'testimonial1-location': 'मुंबई, भारत',
+                    'testimonial2-text': '"इस वेबसाइट ने मुझे मेरे परिवार की परंपराओं के अनुसार सही व्यक्ति से मिलाया। हम बहुत खुश हैं!"',
+                    'testimonial2-name': 'आदिल और ज़ैनब',
+                    'testimonial2-location': 'दिल्ली, भारत',
+                    'testimonial3-text': '"यह प्लेटफॉर्म पूरी तरह से Salmani समुदाय के लिए है, यही बात इसे सबसे अलग बनाती है। बहुत-बहुत शुक्रिया!"',
+                    'testimonial3-name': 'इमरान और सना',
+                    'testimonial3-location': 'लखनऊ, भारत',
+                    'footer-logo': 'Salmani<span>Rishtey</span>',
+                    'footer-tagline': 'Salmani समुदाय के लिए एक समर्पित निकाह सेवा',
+                    'footer-about': 'हमारे बारे में',
+                    'footer-privacy': 'गोपनीयता नीति',
+                    'footer-terms': 'नियम और शर्तें',
+                    'footer-help': 'सहायता',
+                    'footer-copyright': '&copy; 2024 Salmani Rishtey. सर्वाधिकार सुरक्षित।'
+                }
+            };
+
+            const setLanguage = (lang) => {
+                document.querySelectorAll('[data-lang-key]').forEach(element => {
+                    const key = element.getAttribute('data-lang-key');
+                    if (translations[lang] && translations[lang][key]) {
+                        if (element.tagName === 'IMG') {
+                            element.alt = translations[lang][key];
+                        } else if (element.tagName !== 'INPUT') {
+                            element.innerHTML = translations[lang][key];
+                        }
+                    }
+                });
+                document.documentElement.lang = lang;
+                localStorage.setItem('language', lang);
+                languageSelector.value = lang;
+            };
+
+            languageSelector.addEventListener('change', (event) => {
+                setLanguage(event.target.value);
+            });
+
+            // Mobile menu toggle functionality
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                navButtons.classList.toggle('active');
+            });
+            
+            const savedLang = localStorage.getItem('language') || 'en';
+            setLanguage(savedLang);
+        });
+    </script>
+</body>
+</html>
